@@ -42,6 +42,7 @@ public class TranscriptionController  {
         AudioTranscriptionPrompt transcriptionRequest = new AudioTranscriptionPrompt(audioFile);
         AudioTranscriptionResponse response = transcriptionModel.call(transcriptionRequest);
 
-
+        tempFile.delete();
+        return ResponseEntity.ok(response.getResult().getOutput());
     }
 }
